@@ -1,0 +1,424 @@
+/* =========================
+   ROOT VARIABLES
+   ========================= */
+:root {
+  --ink: #0b1220;
+  --muted: #5b667a;
+  --bg: #f3f6fb;
+  --line: #e4eaf3;
+
+  /* Buttons */
+  --blue-dark: #0b4db8;
+  --blue-darker: #062f72;
+
+  --green-dark: #0f7a45;
+  --green-darker: #084927;
+
+  --red-dark: #b11235;
+  --red-darker: #60091c;
+
+  /* MTN lighter yellow */
+  --mtn-main: #fbbf24;
+  --mtn-dark: #f59e0b;
+
+  /* Zamtel */
+  --zamtel-main: #0a7a45;
+  --zamtel-dark: #075c34;
+
+  --shadow: 0 12px 26px rgba(11, 18, 32, 0.1);
+  --shadow-soft: 0 8px 18px rgba(11, 18, 32, 0.08);
+
+  --radius-xl: 18px;
+  --radius-lg: 14px;
+  --radius-md: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.container {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 18px;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, #0b4db8, #1f74ff);
+  color: #fff;
+  box-shadow: var(--shadow);
+  flex-wrap: wrap; /* prevents overflow */
+}
+
+.title {
+  font-weight: 900;
+  margin-right: 10px;
+}
+
+/* NEW: Logo + Brand block */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 42px;
+  width: auto;
+  background-color: #fff;
+  object-fit: contain;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.22);
+  transition: transform 0.12s ease, filter 0.2s ease;
+}
+
+.logo:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.brandTitle {
+  font-weight: 1000;
+  letter-spacing: 0.2px;
+}
+
+.brandSub {
+  font-size: 12px;
+  opacity: 0.9;
+  margin-top: 4px;
+  font-weight: 800;
+}
+
+.nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; /* NEW */
+  align-items: center;
+}
+
+/* =========================
+   PAGE
+   ========================= */
+.page {
+  margin-top: 16px;
+}
+
+.pageTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.pageTitle {
+  font-weight: 900;
+}
+
+/* NEW: used in table No: column */
+.noCell {
+  font-weight: 1000;
+}
+
+/* =========================
+   BANNER
+   ========================= */
+.banner {
+  padding: 12px 14px;
+  border-radius: var(--radius-lg);
+  font-weight: 900; 
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* =========================
+   TOOLBAR
+   ========================= */
+.toolbar {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  min-width: 220px;
+  outline: none; /* NEW */
+}
+
+/* NEW: clean focus ring */
+.search:focus {
+  box-shadow: 0 0 0 4px rgba(11, 77, 184, 0.14);
+  border-color: rgba(11, 77, 184, 0.35);
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+.btn {
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  font-weight: 900;
+  color: #fff;
+  white-space: nowrap;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+  transition: transform 0.08s ease, box-shadow 0.2s ease, filter 0.2s ease; /* NEW */
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.22); /* NEW */
+}
+
+.btn:active {
+  transform: translateY(0px); /* NEW */
+  filter: brightness(0.98); /* NEW */
+}
+
+/* Blue - Add Row */
+.btnPrimary {
+  background: linear-gradient(180deg, var(--blue-dark), var(--blue-darker));
+}
+
+/* Green - Export + Recalculate */
+.btnSuccess {
+  background: linear-gradient(180deg, var(--green-dark), var(--green-darker));
+}
+
+/* Red - Clear + Delete */
+.btnDanger {
+  background: linear-gradient(180deg, var(--red-dark), var(--red-darker));
+}
+
+/* =========================
+   TOTALS
+   ========================= */
+.totalsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.card {
+  background: #fff;
+  border-radius: var(--radius-xl);
+  padding: 14px;
+  box-shadow: var(--shadow-soft);
+}
+
+.totalsCard {
+  position: relative; /* NEW */
+  overflow: hidden;   /* NEW */
+}
+
+.totalsLabel {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.totalsValue {
+  font-size: 26px;
+  font-weight: 1000;
+  margin-top: 6px;
+}
+
+.totalsSub {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* =========================
+   TABLE
+   ========================= */
+.tableWrap {
+  background: #fff;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+
+/* NEW: smoother scroll on trackpads */
+.tableWrap {
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  min-width: 1200px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table th {
+  padding: 12px;
+  font-size: 12.5px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+
+  /* NEW: sticky header */
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.table td {
+  padding: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.table tbody tr:hover td {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* =========================
+   INPUTS
+   ========================= */
+.cell {
+  width: 100%;
+  padding: 9px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  min-width: 140px;
+  outline: none; /* NEW */
+}
+
+.cellLong {
+  min-width: 240px;
+}
+
+.cell:focus {
+  box-shadow: 0 0 0 4px rgba(11, 77, 184, 0.12); /* NEW */
+  border-color: rgba(11, 77, 184, 0.35);        /* NEW */
+}
+
+.cellError {
+  border-color: var(--red-dark);
+  box-shadow: 0 0 0 4px rgba(177, 18, 53, 0.12); /* NEW */
+}
+
+/* NEW: used by your JS */
+.errorText {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--red-dark);
+}
+
+/* NEW: used by your JS */
+.empty {
+  padding: 16px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+/* =========================
+   LOCKED
+   ========================= */
+.lockedWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lockedInput {
+  min-width: 110px;
+  background: rgba(245, 247, 252, 0.9); /* NEW: subtle read-only feel */
+}
+
+.lockIcon {
+  font-size: 16px;
+}
+
+/* =========================
+   ROW ACTIONS (ONE LINE!)
+   ========================= */
+.rowActions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: nowrap; /* prevents wrapping */
+}
+
+.rowActions .btn {
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+/* =========================
+   THEMES
+   ========================= */
+
+/* ZAMTEL – DARK GREEN */
+.page-zamtel .banner {
+  background: linear-gradient(135deg, var(--zamtel-main), var(--zamtel-dark));
+  color: #fff;
+}
+
+.page-zamtel .pageTitle,
+.page-zamtel .noCell {
+  color: var(--zamtel-dark);
+}
+
+.page-zamtel .table th {
+  background: rgba(10, 122, 69, 0.25);
+}
+
+/* MTN – LIGHT YELLOW */
+.page-mtn .banner {
+  background: linear-gradient(135deg, var(--mtn-main), var(--mtn-dark));
+  color: #3a2500;
+}
+
+.page-mtn .pageTitle,
+.page-mtn .noCell {
+  color: #fbbf24;
+}
+
+.page-mtn .table th {
+  background: rgba(251, 191, 36, 0.35);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 900px) {
+  .totalsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .search {
+    min-width: 180px;
+  }
+}
