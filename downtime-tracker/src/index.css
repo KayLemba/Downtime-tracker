@@ -64,7 +64,7 @@ body {
   background: linear-gradient(135deg, #0b4db8, #1f74ff);
   color: #fff;
   box-shadow: var(--shadow);
-  flex-wrap: wrap; /* prevents overflow */
+  flex-wrap: wrap;
 }
 
 .title {
@@ -72,7 +72,6 @@ body {
   margin-right: 10px;
 }
 
-/* NEW: Logo + Brand block */
 .brand {
   display: flex;
   align-items: center;
@@ -116,7 +115,7 @@ body {
 .nav {
   display: flex;
   gap: 10px;
-  flex-wrap: wrap; /* NEW */
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -139,7 +138,6 @@ body {
   font-weight: 900;
 }
 
-/* NEW: used in table No: column */
 .noCell {
   font-weight: 1000;
 }
@@ -150,7 +148,7 @@ body {
 .banner {
   padding: 12px 14px;
   border-radius: var(--radius-lg);
-  font-weight: 900; 
+  font-weight: 900;
   margin-bottom: 12px;
   box-shadow: var(--shadow-soft);
 }
@@ -171,10 +169,9 @@ body {
   border-radius: var(--radius-md);
   border: 1px solid var(--line);
   min-width: 220px;
-  outline: none; /* NEW */
+  outline: none;
 }
 
-/* NEW: clean focus ring */
 .search:focus {
   box-shadow: 0 0 0 4px rgba(11, 77, 184, 0.14);
   border-color: rgba(11, 77, 184, 0.35);
@@ -192,30 +189,27 @@ body {
   color: #fff;
   white-space: nowrap;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
-  transition: transform 0.08s ease, box-shadow 0.2s ease, filter 0.2s ease; /* NEW */
+  transition: transform 0.08s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.22); /* NEW */
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.22);
 }
 
 .btn:active {
-  transform: translateY(0px); /* NEW */
-  filter: brightness(0.98); /* NEW */
+  transform: translateY(0px);
+  filter: brightness(0.98);
 }
 
-/* Blue - Add Row */
 .btnPrimary {
   background: linear-gradient(180deg, var(--blue-dark), var(--blue-darker));
 }
 
-/* Green - Export + Recalculate */
 .btnSuccess {
   background: linear-gradient(180deg, var(--green-dark), var(--green-darker));
 }
 
-/* Red - Clear + Delete */
 .btnDanger {
   background: linear-gradient(180deg, var(--red-dark), var(--red-darker));
 }
@@ -225,7 +219,7 @@ body {
    ========================= */
 .totalsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin: 14px 0;
 }
@@ -238,8 +232,8 @@ body {
 }
 
 .totalsCard {
-  position: relative; /* NEW */
-  overflow: hidden;   /* NEW */
+  position: relative;
+  overflow: hidden;
 }
 
 .totalsLabel {
@@ -267,10 +261,6 @@ body {
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow);
   overflow-x: auto;
-}
-
-/* NEW: smoother scroll on trackpads */
-.tableWrap {
   -webkit-overflow-scrolling: touch;
 }
 
@@ -286,8 +276,6 @@ body {
   font-size: 12.5px;
   text-align: left;
   border-bottom: 1px solid var(--line);
-
-  /* NEW: sticky header */
   position: sticky;
   top: 0;
   z-index: 2;
@@ -311,7 +299,7 @@ body {
   border-radius: var(--radius-md);
   border: 1px solid var(--line);
   min-width: 140px;
-  outline: none; /* NEW */
+  outline: none;
 }
 
 .cellLong {
@@ -319,16 +307,15 @@ body {
 }
 
 .cell:focus {
-  box-shadow: 0 0 0 4px rgba(11, 77, 184, 0.12); /* NEW */
-  border-color: rgba(11, 77, 184, 0.35);        /* NEW */
+  box-shadow: 0 0 0 4px rgba(11, 77, 184, 0.12);
+  border-color: rgba(11, 77, 184, 0.35);
 }
 
 .cellError {
   border-color: var(--red-dark);
-  box-shadow: 0 0 0 4px rgba(177, 18, 53, 0.12); /* NEW */
+  box-shadow: 0 0 0 4px rgba(177, 18, 53, 0.12);
 }
 
-/* NEW: used by your JS */
 .errorText {
   margin-top: 6px;
   font-size: 12px;
@@ -336,7 +323,6 @@ body {
   color: var(--red-dark);
 }
 
-/* NEW: used by your JS */
 .empty {
   padding: 16px;
   color: var(--muted);
@@ -354,7 +340,7 @@ body {
 
 .lockedInput {
   min-width: 110px;
-  background: rgba(245, 247, 252, 0.9); /* NEW: subtle read-only feel */
+  background: rgba(245, 247, 252, 0.9);
 }
 
 .lockIcon {
@@ -362,13 +348,13 @@ body {
 }
 
 /* =========================
-   ROW ACTIONS (ONE LINE!)
+   ROW ACTIONS
    ========================= */
 .rowActions {
   display: flex;
   gap: 6px;
   align-items: center;
-  flex-wrap: nowrap; /* prevents wrapping */
+  flex-wrap: nowrap;
 }
 
 .rowActions .btn {
@@ -379,8 +365,6 @@ body {
 /* =========================
    THEMES
    ========================= */
-
-/* ZAMTEL – DARK GREEN */
 .page-zamtel .banner {
   background: linear-gradient(135deg, var(--zamtel-main), var(--zamtel-dark));
   color: #fff;
@@ -395,7 +379,6 @@ body {
   background: rgba(10, 122, 69, 0.25);
 }
 
-/* MTN – LIGHT YELLOW */
 .page-mtn .banner {
   background: linear-gradient(135deg, var(--mtn-main), var(--mtn-dark));
   color: #3a2500;
@@ -413,6 +396,12 @@ body {
 /* =========================
    RESPONSIVE
    ========================= */
+@media (max-width: 1100px) {
+  .totalsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 900px) {
   .totalsGrid {
     grid-template-columns: 1fr;

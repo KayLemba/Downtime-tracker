@@ -212,14 +212,12 @@ export default function DowntimePage({ pageName, title, storageKey, exportPrefix
   const [rows, setRows] = useState([blankRow(1)]);
   const [search, setSearch] = useState("");
 
-  // IMPORTANT: Always reload when page changes (prevents mixing)
   useEffect(() => {
     const fromLS = localStorage.getItem(storageKey);
     const loaded = fromLS ? safeParseJSON(fromLS, []) : [];
     setRows(normalizeLoadedRows(loaded));
   }, [storageKey]);
 
-  // Save this page’s rows ONLY to this page’s key
   useEffect(() => {
     localStorage.setItem(storageKey, JSON.stringify(rows));
   }, [rows, storageKey]);
@@ -239,22 +237,25 @@ export default function DowntimePage({ pageName, title, storageKey, exportPrefix
     let today = 0;
     let week = 0;
     let month = 0;
+    let all = 0;
 
     for (const r of rows) {
       const dateStr = (r["Date"] ?? "").toString().trim();
       const mins = parseMinutes(r["Total Downtime (Minutes)"]);
       if (!dateStr || mins <= 0) continue;
 
+      all += mins;
+
       if (dateStr === todayISO) today += mins;
 
       const d = new Date(`${dateStr}T00:00:00`);
       if (!Number.isNaN(d.getTime())) {
-        if (d.getTime() >= weekStart.getTime()) week += mins;
-        if (d.getTime() >= monthStart.getTime()) month += mins;
+        if (d >= weekStart && d <= now) week += mins;
+        if (d >= monthStart && d <= now) month += mins;
       }
     }
 
-    return { today, week, month };
+    return { today, week, month, all };
   }, [rows]);
 
   const filteredRows = useMemo(() => {
@@ -336,17 +337,14 @@ export default function DowntimePage({ pageName, title, storageKey, exportPrefix
             placeholder="Search…"
           />
 
-          {/* Add Row = BLUE */}
           <button className="btn btnPrimary" onClick={addRow}>
             + Add Row
           </button>
 
-          {/* Export = GREEN */}
           <button className="btn btnSuccess" onClick={exportXLSX}>
             Export Excel (.xlsx)
           </button>
 
-          {/* Clear All = RED */}
           <button className="btn btnDanger" onClick={clearAll}>
             Clear All
           </button>
@@ -357,6 +355,7 @@ export default function DowntimePage({ pageName, title, storageKey, exportPrefix
         <TotalsCard label="Today" minutes={totals.today} />
         <TotalsCard label="This Week" minutes={totals.week} />
         <TotalsCard label="This Month" minutes={totals.month} />
+        <TotalsCard label="All Time" minutes={totals.all} />
       </div>
 
       <div className="tableWrap">
@@ -412,12 +411,10 @@ export default function DowntimePage({ pageName, title, storageKey, exportPrefix
 
                   <td>
                     <div className="rowActions">
-                      {/* Recalculate = GREEN */}
                       <button className="btn btnSuccess" onClick={() => recalcRow(realIndex)}>
                         Recalculate
                       </button>
 
-                      {/* Delete = RED */}
                       <button className="btn btnDanger" onClick={() => deleteRow(realIndex)}>
                         Delete
                       </button>
